@@ -1,0 +1,479 @@
+@import "tailwindcss";
+
+/* ── Enable class-based dark mode (Tailwind v4) ────────────────────────────── */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+
+  /* ════════════════════════════════════════════════════════════════════════
+     DARK MODE (default) — Sophisticated graphite, charcoal, muted electric teal
+     Strictly NO purple, violet, or lavender.
+     ════════════════════════════════════════════════════════════════════════ */
+  :root,
+  html.dark {
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+    /* Slate scale remapped to deep charcoal / graphite */
+    --color-slate-50:  #E8ECEF; /* primary soft white text */
+    --color-slate-100: #DEE4E8;
+    --color-slate-200: #CBD5E1;
+    --color-slate-300: #B0BAC2;
+    --color-slate-400: #929CA3; /* secondary muted gray text */
+    --color-slate-500: #6B7780;
+    --color-slate-600: #4B555D;
+    --color-slate-700: #3A444B;
+    --color-slate-800: #2A3237; /* subtle graphite-gray border */
+    --color-slate-900: #171B1E; /* surface / cards */
+    --color-slate-950: #0B0D0F; /* background deep charcoal / near black */
+
+    /* Indigo & Violet mapped to Muted Electric Teal / Cyan (strictly no purple) */
+    --color-indigo-50:  #f0fdfa;
+    --color-indigo-100: #ccfbf1;
+    --color-indigo-200: #99f6e4;
+    --color-indigo-300: #5eead4;
+    --color-indigo-400: #35D0BA;
+    --color-indigo-500: #28A899;
+    --color-indigo-600: #1D8F82;
+    --color-indigo-700: #14746A;
+    --color-indigo-800: #115E59;
+    --color-indigo-900: #134E48;
+    --color-indigo-950: #042F2E;
+
+    --color-violet-50:  #f0fdfa;
+    --color-violet-100: #ccfbf1;
+    --color-violet-200: #99f6e4;
+    --color-violet-300: #5eead4;
+    --color-violet-400: #36BFC7;
+    --color-violet-500: #35D0BA;
+    --color-violet-600: #28A899;
+    --color-violet-700: #1D8F82;
+    --color-violet-800: #14746A;
+    --color-violet-900: #134E48;
+    --color-violet-950: #042F2E;
+
+    /* Secondary Accent: Cool Steel Blue */
+    --color-blue-400: #6FA8C9;
+    --color-blue-500: #5B93B3;
+
+    /* Semantic status overrides */
+    --color-emerald-400: #3CBF88;
+    --color-emerald-500: #3CBF88;
+    --color-amber-400:   #E5B567;
+    --color-amber-500:   #E5B567;
+    --color-rose-400:    #E47777;
+    --color-rose-500:    #E47777;
+
+    /* Design tokens */
+    --bg-page:       #0B0D0F;
+    --bg-secondary:  #111416;
+    --bg-surface:    #171B1E;
+    --bg-raised:     #1C2226;
+    --border-c:      #2A3237;
+    --text-base:     #E8ECEF;
+    --text-muted:    #929CA3;
+    --accent-teal:   #35D0BA;
+    --accent-cyan:   #36BFC7;
+    --accent-steel:  #6FA8C9;
+    --color-success: #3CBF88;
+    --color-warning: #E5B567;
+    --color-error:   #E47777;
+
+    color-scheme: dark;
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     LIGHT MODE — Clean, premium off-white, crisp surfaces, graphite text, muted teal
+     ════════════════════════════════════════════════════════════════════════ */
+  html.light {
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+    /* Slate scale inverted for clean, premium light theme */
+    --color-slate-950: #F5F7F7; /* Soft off-white page background */
+    --color-slate-900: #FFFFFF; /* Crisp white card surface */
+    --color-slate-850: #EEF2F2; /* Secondary elevated surface */
+    --color-slate-800: #DCE3E4; /* Fine neutral border */
+    --color-slate-700: #CBD5E1;
+    --color-slate-600: #94A3B8;
+    --color-slate-500: #657178;
+    --color-slate-400: #657178; /* Secondary text */
+    --color-slate-300: #334155;
+    --color-slate-200: #1C2226;
+    --color-slate-100: #182126;
+    --color-slate-50:  #182126; /* Dark graphite text */
+
+    /* Teal & cyan accents in light mode */
+    --color-indigo-50:  #f0fdfa;
+    --color-indigo-100: #ccfbf1;
+    --color-indigo-200: #99f6e4;
+    --color-indigo-300: #14b8a6;
+    --color-indigo-400: #168F82;
+    --color-indigo-500: #168F82;
+    --color-indigo-600: #0F766E;
+    --color-indigo-700: #134e4a;
+    --color-indigo-800: #042f2e;
+    --color-indigo-900: #02201f;
+    --color-indigo-950: #011514;
+
+    --color-violet-50:  #f0fdfa;
+    --color-violet-100: #ccfbf1;
+    --color-violet-200: #99f6e4;
+    --color-violet-300: #269DA6;
+    --color-violet-400: #269DA6;
+    --color-violet-500: #168F82;
+    --color-violet-600: #0F766E;
+    --color-violet-700: #134e4a;
+    --color-violet-800: #042f2e;
+    --color-violet-900: #02201f;
+    --color-violet-950: #011514;
+
+    --color-blue-400: #4A7A96;
+    --color-blue-500: #3A6680;
+
+    --color-emerald-400: #2E9B6E;
+    --color-emerald-500: #2E9B6E;
+    --color-amber-400:   #C49646;
+    --color-amber-500:   #C49646;
+    --color-rose-400:    #C85858;
+    --color-rose-500:    #C85858;
+
+    --bg-page:       #F5F7F7;
+    --bg-surface:    #FFFFFF;
+    --bg-raised:     #EEF2F2;
+    --border-c:      #DCE3E4;
+    --text-base:     #182126;
+    --text-muted:    #657178;
+    --accent-teal:   #168F82;
+    --accent-cyan:   #269DA6;
+    --accent-steel:  #4A7A96;
+    --color-success: #2E9B6E;
+    --color-warning: #C49646;
+    --color-error:   #C85858;
+
+    color-scheme: light;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-page);
+    color: var(--text-base);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  /* Light mode: headings & primary text */
+  html.light .text-white,
+  html.light h1.text-white,
+  html.light h2.text-white,
+  html.light h3.text-white {
+    color: #111416 !important;
+  }
+
+  /* Light mode: glass cards and surfaces */
+  html.light .glass {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border-color: #E2E8F0 !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  /* Refined scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #2A3237; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: #35D0BA; }
+  html.light ::-webkit-scrollbar-thumb { background: #CBD5E1; }
+  html.light ::-webkit-scrollbar-thumb:hover { background: #0D9488; }
+
+  code, pre, .font-mono { font-family: var(--font-mono) !important; }
+
+  ::selection {
+    background: rgba(53, 208, 186, 0.25);
+    color: inherit;
+  }
+}
+
+/* ── Technical Minimalist Grid ────────────────────────────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(53, 208, 186, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(53, 208, 186, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+html.light .bg-grid {
+  background-image:
+    linear-gradient(rgba(13, 148, 136, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 148, 136, 0.04) 1px, transparent 1px);
+}
+
+/* ── Modern Glassmorphism ────────────────────────────────────────────────── */
+.glass {
+  background: rgba(23, 27, 30, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #2A3237;
+}
+
+.glass-hover {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-hover:hover {
+  border-color: rgba(53, 208, 186, 0.35);
+  background: rgba(28, 34, 38, 0.85);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+html.light .glass-hover:hover {
+  background: #FFFFFF !important;
+  border-color: rgba(13, 148, 136, 0.35) !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ── Restrained Gradient Border ──────────────────────────────────────────── */
+.grad-border {
+  position: relative;
+}
+.grad-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(53, 208, 186, 0.4), rgba(111, 168, 201, 0.2), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── Glow Effects (Subtle & purposeful) ───────────────────────────────────── */
+.glow-teal {
+  box-shadow: 0 0 24px rgba(53, 208, 186, 0.15), 0 0 48px rgba(53, 208, 186, 0.05);
+}
+.glow-cyan {
+  box-shadow: 0 0 24px rgba(54, 191, 199, 0.15);
+}
+.text-glow {
+  text-shadow: 0 0 16px rgba(53, 208, 186, 0.4);
+}
+
+/* ── Gradient Text ────────────────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #35D0BA 0%, #36BFC7 50%, #6FA8C9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+html.light .gradient-text {
+  background: linear-gradient(135deg, #0D9488 0%, #0F766E 50%, #4A7A96 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Restrained Teal Gradient Button ─────────────────────────────────────── */
+.btn-gradient {
+  background: linear-gradient(135deg, #28A899, #35D0BA);
+  color: #0B0D0F;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #35D0BA, #36BFC7);
+  box-shadow: 0 2px 14px rgba(53, 208, 186, 0.3);
+  transform: translateY(-1px);
+}
+html.light .btn-gradient {
+  background: linear-gradient(135deg, #0D9488, #14B8A6);
+  color: #FFFFFF;
+}
+
+/* ── Sidebar Active State ─────────────────────────────────────────────────── */
+.nav-active {
+  background: linear-gradient(90deg, rgba(53, 208, 186, 0.12), rgba(53, 208, 186, 0.02));
+  border-left: 2px solid #35D0BA;
+  color: #35D0BA !important;
+}
+html.light .nav-active {
+  background: linear-gradient(90deg, rgba(13, 148, 136, 0.1), rgba(13, 148, 136, 0.02));
+  border-left: 2px solid #0D9488;
+  color: #0D9488 !important;
+}
+
+/* ── Subtle Technical Aurora / Ambient Depth ─────────────────────────────── */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.04;
+  will-change: transform;
+}
+.aurora-blob-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #35D0BA, transparent 70%);
+  top: -150px;
+  left: 10%;
+}
+.aurora-blob-2 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, #6FA8C9, transparent 70%);
+  top: 40%;
+  right: -100px;
+}
+.aurora-blob-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #171B1E, transparent 70%);
+  bottom: -100px;
+  left: 30%;
+}
+html.light .aurora-blob {
+  opacity: 0.03;
+}
+
+/* ── Theme Toggle Button ──────────────────────────────────────────────────── */
+.theme-toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: 99px;
+  background: rgba(42, 50, 55, 0.8);
+  border: 1px solid #2A3237;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.theme-toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #35D0BA;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 6px rgba(53, 208, 186, 0.5);
+}
+html.light .theme-toggle {
+  background: #E2E8F0;
+  border-color: #CBD5E1;
+}
+html.light .theme-toggle::after {
+  transform: translateX(20px);
+  background: #F59E0B;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.4);
+}
+
+/* ── Fade Animations (Snappy 150-250ms) ───────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fadeIn 0.2s ease forwards;
+}
+
+/* ── Pulse Dot ────────────────────────────────────────────────────────────── */
+.pulse-dot {
+  position: relative;
+  display: inline-flex;
+}
+.pulse-dot::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.25;
+  animation: pulseDot 2s ease-out infinite;
+}
+@keyframes pulseDot {
+  0%   { transform: scale(1); opacity: 0.3; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* ── Smooth Transitions ───────────────────────────────────────────────────── */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
+
+/* ── Accessibility & Reduced Motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .aurora-blob {
+    animation: none !important;
+  }
+}
+
+/* ── Print & PDF Export ───────────────────────────────────────────────────── */
+@media print {
+  @page {
+    margin: 1.5cm;
+    size: A4 portrait;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111416 !important;
+    font-size: 11pt !important;
+  }
+
+  /* Hide app navigation and decorative elements */
+  header, aside, nav, .print\:hidden, button, .aurora, .bg-grid {
+    display: none !important;
+  }
+
+  /* Prevent page breaks inside cards, tables, diagrams, and code */
+  article, table, pre, svg, .mermaid, .print\:page-break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+    color: #111416 !important;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  th, td {
+    border-bottom: 1px solid #DCE3E4 !important;
+    color: #111416 !important;
+    padding: 6px 10px !important;
+  }
+
+  svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
